@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>패스 송도 굿즈 | 구매희망 접수</title>
+  <title>패스 굿즈 구매희망 접수</title>
   <style>
     :root {
       --bg: #f4f7fb;
@@ -36,7 +36,11 @@
       line-height: 1.6;
     }
 
-    img { display: block; max-width: 100%; height: auto; }
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
 
     .container {
       width: min(980px, calc(100% - 32px));
@@ -113,7 +117,9 @@
       color: #fff;
     }
 
-    .button.primary:hover { background: var(--accent-dark); }
+    .button.primary:hover {
+      background: var(--accent-dark);
+    }
 
     .button.secondary {
       background: #fff;
@@ -121,7 +127,9 @@
       border: 1px solid var(--line);
     }
 
-    .button:hover { transform: translateY(-1px); }
+    .button:hover {
+      transform: translateY(-1px);
+    }
 
     .small {
       margin-top: 14px;
@@ -177,7 +185,9 @@
       align-items: center;
     }
 
-    .product-summary::-webkit-details-marker { display: none; }
+    .product-summary::-webkit-details-marker {
+      display: none;
+    }
 
     .product-main h3 {
       margin: 0 0 8px;
@@ -192,7 +202,9 @@
       font-size: 15px;
     }
 
-    .meta li + li { margin-top: 4px; }
+    .meta li + li {
+      margin-top: 4px;
+    }
 
     .summary-right {
       text-align: right;
@@ -212,6 +224,35 @@
       padding-top: 18px;
       display: grid;
       gap: 16px;
+    }
+
+    .season {
+      display: inline-block;
+      width: fit-content;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: #edf4ff;
+      color: var(--accent-dark);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .product-copy {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .product-name-box {
+      margin: 0;
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: #f4f8ff;
+      border: 1px solid #d7e4f6;
+      color: #244266;
+      font-size: 14px;
+      font-weight: 700;
+      white-space: pre-line;
     }
 
     .product-note {
@@ -246,6 +287,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      cursor: zoom-in;
     }
 
     .photo-fallback {
@@ -279,7 +321,9 @@
       padding-left: 20px;
     }
 
-    .steps li + li { margin-top: 8px; }
+    .steps li + li {
+      margin-top: 8px;
+    }
 
     .notice {
       padding: 16px 18px;
@@ -305,6 +349,46 @@
       font-size: 13px;
     }
 
+    .image-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(10, 18, 32, 0.88);
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .image-modal.open {
+      display: flex;
+    }
+
+    .image-modal img {
+      max-width: min(95vw, 1200px);
+      max-height: 90vh;
+      width: auto;
+      height: auto;
+      border-radius: 14px;
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+      background: #fff;
+    }
+
+    .image-modal-close {
+      position: absolute;
+      top: 18px;
+      right: 22px;
+      border: none;
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+      font-size: 30px;
+      line-height: 1;
+      width: 48px;
+      height: 48px;
+      border-radius: 999px;
+      cursor: pointer;
+    }
+
     @media (max-width: 720px) {
       .container { margin-top: 20px; }
       .hero { padding: 28px 20px; border-radius: 22px; }
@@ -315,6 +399,13 @@
       .photo-grid { grid-template-columns: 1fr; }
       .product-summary { grid-template-columns: 1fr; }
       .summary-right { text-align: left; }
+      .image-modal {
+        padding: 16px;
+      }
+      .image-modal-close {
+        top: 14px;
+        right: 14px;
+      }
     }
   </style>
 </head>
@@ -325,7 +416,7 @@
         <img src="assets/logo.png" alt="학원 로고" onerror="this.style.display='none';">
       </div>
 
-      <span class="eyebrow">PASS SONGDO SHOP</span>
+      <span class="eyebrow">PASS GOODS · 2026</span>
       <h1>패스 굿즈 구매희망 접수</h1>
       <p class="lead">
         다양한 패스 굿즈의 구매희망을 받는 안내 페이지입니다.
@@ -333,15 +424,18 @@
       </p>
 
       <div class="actions">
-        <a class="button primary" href="https://naver.me/xIF3FSxX" target="_blank" rel="noopener noreferrer">구매희망 제출하기</a>
+        <a class="button primary" href="여기에-네이버폼-링크" target="_blank" rel="noopener noreferrer">구매희망 제출하기</a>
         <a class="button secondary" href="#products">신청 가능 제품 보기</a>
       </div>
+
       <p class="small">※ 제출만으로 주문이 확정되지 않습니다.</p>
     </section>
 
     <section class="section" id="products">
       <h2>신청 가능 제품</h2>
-      <p class="section-copy">카드를 눌러 열면 제품 설명과 사진을 함께 볼 수 있습니다. 다른 패스 굿즈 추가요청 적극 환영.</p>
+      <p class="section-copy">
+        카드를 눌러 열면 제품 설명과 사진을 함께 볼 수 있습니다. 다른 패스 굿즈 추가요청 적극 환영.
+      </p>
 
       <div class="product-list">
         <details class="product-item">
@@ -349,79 +443,89 @@
             <div class="product-main">
               <h3>패스 티셔츠</h3>
               <ul class="meta">
-                <li>가격: 10,000원</li>
-                <li>사이즈: 85(S)~120(5XL) / 5단위</li>
-                <li>색상: 블랙 / 화이트 / 블루</li>
+                <li>2026 시즌</li>
+                <li>사진 클릭 시 크게 보기 가능</li>
               </ul>
             </div>
             <div class="summary-right">눌러서 사진 보기</div>
           </summary>
           <div class="product-body">
             <div class="product-body-inner">
-              <p class="product-note">2026 시즌 <code class="inline-path">패스체대입시 티셔츠</code> 입니다.</p>
+              <span class="season">2026 시즌</span>
+              <p class="product-name-box">패스체대입시 티셔츠</p>
+              <p class="product-copy">기본 유니폼 성격의 대표 굿즈입니다.</p>
+              <p class="product-note">사진을 누르면 팝업으로 크게 볼 수 있습니다.</p>
+
               <div class="photo-grid">
                 <figure class="photo-card">
                   <div class="photo-frame">
-                    <img src="assets/tshirt-1.jpg" alt="학원 티셔츠 제품 사진 1" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+                    <img src="assets/tshirt-1.jpg" alt="패스 티셔츠 제품 사진 1" onclick="openImageModal(this.src, this.alt)" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
                     <div class="photo-fallback">티셔츠 사진 1<br>assets/tshirt-1.jpg</div>
                   </div>
-                  <figcaption class="photo-caption">블랙</figcaption>
+                  <figcaption class="photo-caption">대표 이미지</figcaption>
                 </figure>
+
                 <figure class="photo-card">
                   <div class="photo-frame">
-                    <img src="assets/tshirt-2.jpg" alt="학원 티셔츠 제품 사진 2" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+                    <img src="assets/tshirt-2.jpg" alt="패스 티셔츠 제품 사진 2" onclick="openImageModal(this.src, this.alt)" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
                     <div class="photo-fallback">티셔츠 사진 2<br>assets/tshirt-2.jpg</div>
                   </div>
-                  <figcaption class="photo-caption">화이트</figcaption>
+                  <figcaption class="photo-caption">뒷면 또는 착용 컷</figcaption>
                 </figure>
+
                 <figure class="photo-card">
                   <div class="photo-frame">
-                    <img src="assets/tshirt-3.jpg" alt="학원 티셔츠 제품 사진 3" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+                    <img src="assets/tshirt-3.jpg" alt="패스 티셔츠 제품 사진 3" onclick="openImageModal(this.src, this.alt)" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
                     <div class="photo-fallback">티셔츠 사진 3<br>assets/tshirt-3.jpg</div>
                   </div>
-                  <figcaption class="photo-caption">블루</figcaption>
+                  <figcaption class="photo-caption">로고 또는 디테일 컷</figcaption>
                 </figure>
               </div>
             </div>
           </div>
-        </details>        
+        </details>
 
         <details class="product-item">
           <summary class="product-summary">
             <div class="product-main">
               <h3>패스 바람막이</h3>
               <ul class="meta">
-                <li>가격: 35,000원</li>
-                <li>사이즈: 85 ~ 120 / 5단위</li>
-                <li>색상: 블랙 / 화이트 / 블루</li>
+                <li>2026 시즌</li>
+                <li>사진 클릭 시 크게 보기 가능</li>
               </ul>
             </div>
             <div class="summary-right">눌러서 사진 보기</div>
           </summary>
           <div class="product-body">
             <div class="product-body-inner">
-              <p class="product-note">2026 시즌 <code class="inline-path">패스체대입시 바람막이</code>입니다.</p>
+              <span class="season">2026 시즌</span>
+              <p class="product-name-box">패스체대입시 바람막이</p>
+              <p class="product-copy">계절성 수요가 큰 아우터 제품입니다.</p>
+              <p class="product-note">사진을 누르면 팝업으로 크게 볼 수 있습니다.</p>
+
               <div class="photo-grid">
                 <figure class="photo-card">
                   <div class="photo-frame">
-                    <img src="assets/windbreaker-1.jpg" alt="학원 바람막이 제품 사진 1" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+                    <img src="assets/windbreaker-1.jpg" alt="패스 바람막이 제품 사진 1" onclick="openImageModal(this.src, this.alt)" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
                     <div class="photo-fallback">바람막이 사진 1<br>assets/windbreaker-1.jpg</div>
                   </div>
-                  <figcaption class="photo-caption">블랙</figcaption>
+                  <figcaption class="photo-caption">대표 이미지</figcaption>
                 </figure>
+
                 <figure class="photo-card">
                   <div class="photo-frame">
-                    <img src="assets/windbreaker-2.jpg" alt="학원 바람막이 제품 사진 2" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+                    <img src="assets/windbreaker-2.jpg" alt="패스 바람막이 제품 사진 2" onclick="openImageModal(this.src, this.alt)" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
                     <div class="photo-fallback">바람막이 사진 2<br>assets/windbreaker-2.jpg</div>
                   </div>
-                  <figcaption class="photo-caption">화이트</figcaption>
+                  <figcaption class="photo-caption">뒷면 또는 착용 컷</figcaption>
                 </figure>
+
                 <figure class="photo-card">
                   <div class="photo-frame">
-                    <img src="assets/windbreaker-3.jpg" alt="학원 바람막이 제품 사진 3" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+                    <img src="assets/windbreaker-3.jpg" alt="패스 바람막이 제품 사진 3" onclick="openImageModal(this.src, this.alt)" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
                     <div class="photo-fallback">바람막이 사진 3<br>assets/windbreaker-3.jpg</div>
                   </div>
-                  <figcaption class="photo-caption">블루</figcaption>
+                  <figcaption class="photo-caption">로고 또는 디테일 컷</figcaption>
                 </figure>
               </div>
             </div>
@@ -433,34 +537,39 @@
             <div class="product-main">
               <h3>패스 양말</h3>
               <ul class="meta">
-                <li>가격: 3,000원</li>
-                <li>사이즈: FREE</li>
-                <li>색상: 화이트</li>
+                <li>2026 시즌</li>
+                <li>사진 클릭 시 크게 보기 가능</li>
               </ul>
             </div>
             <div class="summary-right">눌러서 사진 보기</div>
           </summary>
           <div class="product-body">
             <div class="product-body-inner">
-              <p class="product-note">2026 시즌 <code class="inline-path">패스체대입시 양말</code>입니다.</p>
+              <span class="season">2026 시즌</span>
+              <p class="product-name-box">패스체대입시 양말</p>
+              <p class="product-copy">가볍게 함께 구매하기 좋은 기본 굿즈입니다.</p>
+              <p class="product-note">사진을 누르면 팝업으로 크게 볼 수 있습니다.</p>
+
               <div class="photo-grid">
                 <figure class="photo-card">
                   <div class="photo-frame">
-                    <img src="assets/socks-1.jpg" alt="양말 제품 사진 1" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+                    <img src="assets/socks-1.jpg" alt="패스 양말 제품 사진 1" onclick="openImageModal(this.src, this.alt)" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
                     <div class="photo-fallback">양말 사진 1<br>assets/socks-1.jpg</div>
                   </div>
                   <figcaption class="photo-caption">대표 이미지</figcaption>
                 </figure>
+
                 <figure class="photo-card">
                   <div class="photo-frame">
-                    <img src="assets/socks-2.jpg" alt="양말 제품 사진 2" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+                    <img src="assets/socks-2.jpg" alt="패스 양말 제품 사진 2" onclick="openImageModal(this.src, this.alt)" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
                     <div class="photo-fallback">양말 사진 2<br>assets/socks-2.jpg</div>
                   </div>
                   <figcaption class="photo-caption">디테일 컷</figcaption>
                 </figure>
+
                 <figure class="photo-card">
                   <div class="photo-frame">
-                    <img src="assets/socks-3.jpg" alt="양말 제품 사진 3" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+                    <img src="assets/socks-3.jpg" alt="패스 양말 제품 사진 3" onclick="openImageModal(this.src, this.alt)" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
                     <div class="photo-fallback">양말 사진 3<br>assets/socks-3.jpg</div>
                   </div>
                   <figcaption class="photo-caption">착용 컷</figcaption>
@@ -475,37 +584,42 @@
             <div class="product-main">
               <h3>패스 반바지</h3>
               <ul class="meta">
-                <li>가격: 15,000원</li>
-                <li>사이즈: S(85) ~ 3XL(110)</li>
-                <li>색상: 블랙</li>
+                <li>2026 시즌</li>
+                <li>사진 클릭 시 크게 보기 가능</li>
               </ul>
             </div>
             <div class="summary-right">눌러서 사진 보기</div>
           </summary>
           <div class="product-body">
             <div class="product-body-inner">
-              <p class="product-note">2026 시즌 <code class="inline-path">패스체대입시 반바지</code>입니다.</p>
+              <span class="season">2026 시즌</span>
+              <p class="product-name-box">패스체대입시 반바지</p>
+              <p class="product-copy">훈련용으로 활용하기 좋은 하의 제품입니다.</p>
+              <p class="product-note">사진을 누르면 팝업으로 크게 볼 수 있습니다.</p>
+
               <div class="photo-grid">
                 <figure class="photo-card">
                   <div class="photo-frame">
-                    <img src="assets/shorts-1.jpg" alt="반바지 제품 사진 1" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+                    <img src="assets/shorts-1.jpg" alt="패스 반바지 제품 사진 1" onclick="openImageModal(this.src, this.alt)" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
                     <div class="photo-fallback">반바지 사진 1<br>assets/shorts-1.jpg</div>
                   </div>
                   <figcaption class="photo-caption">대표 이미지</figcaption>
                 </figure>
+
                 <figure class="photo-card">
                   <div class="photo-frame">
-                    <img src="assets/shorts-2.jpg" alt="반바지 제품 사진 2" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+                    <img src="assets/shorts-2.jpg" alt="패스 반바지 제품 사진 2" onclick="openImageModal(this.src, this.alt)" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
                     <div class="photo-fallback">반바지 사진 2<br>assets/shorts-2.jpg</div>
                   </div>
                   <figcaption class="photo-caption">착용 예시</figcaption>
                 </figure>
+
                 <figure class="photo-card">
                   <div class="photo-frame">
-                    <img src="assets/shorts-3.jpg" alt="반바지 제품 사진 3" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+                    <img src="assets/shorts-3.jpg" alt="패스 반바지 제품 사진 3" onclick="openImageModal(this.src, this.alt)" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
                     <div class="photo-fallback">반바지 사진 3<br>assets/shorts-3.jpg</div>
                   </div>
-                  <figcaption class="photo-caption">사이즈표</figcaption>
+                  <figcaption class="photo-caption">사이즈표 또는 디테일 컷</figcaption>
                 </figure>
               </div>
             </div>
@@ -517,37 +631,42 @@
             <div class="product-main">
               <h3>패스 후리스</h3>
               <ul class="meta">
-                <li>가격: 20,000원</li>
-                <li>사이즈: M ~ 2XL</li>
-                <li>색상: 블랙</li>
+                <li>2026 시즌</li>
+                <li>사진 클릭 시 크게 보기 가능</li>
               </ul>
             </div>
             <div class="summary-right">눌러서 사진 보기</div>
           </summary>
           <div class="product-body">
             <div class="product-body-inner">
-              <p class="product-note">2026 시즌 <code class="inline-path">인천송도센터 후리스</code> 입니다.</p>
+              <span class="season">2026 시즌</span>
+              <p class="product-name-box">인천송도센터 후리스</p>
+              <p class="product-copy">겨울철 활용도가 높은 보온성 제품입니다.</p>
+              <p class="product-note">사진을 누르면 팝업으로 크게 볼 수 있습니다.</p>
+
               <div class="photo-grid">
                 <figure class="photo-card">
                   <div class="photo-frame">
-                    <img src="assets/tshirt-1.jpg" alt="학원 티셔츠 제품 사진 1" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
-                    <div class="photo-fallback">티셔츠 사진 1<br>assets/tshirt-1.jpg</div>
+                    <img src="assets/fleece-1.jpg" alt="패스 후리스 제품 사진 1" onclick="openImageModal(this.src, this.alt)" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+                    <div class="photo-fallback">후리스 사진 1<br>assets/fleece-1.jpg</div>
                   </div>
-                  <figcaption class="photo-caption">전면</figcaption>
+                  <figcaption class="photo-caption">대표 이미지</figcaption>
                 </figure>
+
                 <figure class="photo-card">
                   <div class="photo-frame">
-                    <img src="assets/tshirt-2.jpg" alt="학원 티셔츠 제품 사진 2" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
-                    <div class="photo-fallback">티셔츠 사진 2<br>assets/tshirt-2.jpg</div>
+                    <img src="assets/fleece-2.jpg" alt="패스 후리스 제품 사진 2" onclick="openImageModal(this.src, this.alt)" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+                    <div class="photo-fallback">후리스 사진 2<br>assets/fleece-2.jpg</div>
                   </div>
-                  <figcaption class="photo-caption">착용샷</figcaption>
+                  <figcaption class="photo-caption">착용 예시</figcaption>
                 </figure>
+
                 <figure class="photo-card">
                   <div class="photo-frame">
-                    <img src="assets/tshirt-3.jpg" alt="학원 티셔츠 제품 사진 3" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
-                    <div class="photo-fallback">티셔츠 사진 3<br>assets/tshirt-3.jpg</div>
+                    <img src="assets/fleece-3.jpg" alt="패스 후리스 제품 사진 3" onclick="openImageModal(this.src, this.alt)" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+                    <div class="photo-fallback">후리스 사진 3<br>assets/fleece-3.jpg</div>
                   </div>
-                  <figcaption class="photo-caption">착용샷</figcaption>
+                  <figcaption class="photo-caption">디테일 컷</figcaption>
                 </figure>
               </div>
             </div>
@@ -575,7 +694,42 @@
     </section>
 
     <p class="footer">문의는 안 받을래요</p>
-    <p class="footer">2025-26 This site was made by CHO</p>
   </main>
+
+  <div class="image-modal" id="imageModal" onclick="closeImageModal()">
+    <button class="image-modal-close" type="button" onclick="closeImageModal(event)">×</button>
+    <img id="imageModalImg" src="" alt="" onclick="event.stopPropagation()">
+  </div>
+
+  <script>
+    function openImageModal(src, alt) {
+      const modal = document.getElementById('imageModal');
+      const modalImg = document.getElementById('imageModalImg');
+
+      modalImg.src = src;
+      modalImg.alt = alt || '확대 이미지';
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeImageModal(event) {
+      if (event) {
+        event.stopPropagation();
+      }
+
+      const modal = document.getElementById('imageModal');
+      const modalImg = document.getElementById('imageModalImg');
+
+      modal.classList.remove('open');
+      modalImg.src = '';
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') {
+        closeImageModal();
+      }
+    });
+  </script>
 </body>
 </html>
